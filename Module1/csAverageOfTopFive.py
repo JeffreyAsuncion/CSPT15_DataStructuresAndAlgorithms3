@@ -26,6 +26,9 @@ Leetcode 1086
 https://www.youtube.com/watch?v=3iqC5J4l0Cc"""
 
 def csAverageOfTopFive(scores):
+    """
+    My solution is broken
+    """
     result = []
     _lista = []
     _listb = []
@@ -43,8 +46,26 @@ def csAverageOfTopFive(scores):
     averageB = sum(_listb[:6])/5
     result.append([2, averageB])
 
-
     return result
+
+"""
+Corey Solution
+"""
+def csAverageOfTopFive(scores):
+# for loop to iterate over nested list  
+    list = []
+    for i in range(len(scores)):
+        if scores[i][0] not in list:
+            list.append(scores[i][0])
+        # iterate over student id's and append them to dictionary key. Set each dictionary key to an             empty list
+    new_dict = dict.fromkeys(list, [])
+    print(new_dict)
+    for i in range(len(scores)):
+        print(scores[i][0])
+        print(new_dict[scores[i][0]])
+        new_dict[scores[i][0]].append(scores[i][1])
+        print(new_dict)
+
 
 
 scores = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]
