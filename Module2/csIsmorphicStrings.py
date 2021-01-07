@@ -17,7 +17,8 @@ def csIsomorphicStrings(a, b):
             
         a_list[a_idx] = i+1
         b_list[b_idx] = i+1
-    
+        print(a_list)
+        print(b_list)
     return True
 
 a = "egg"
