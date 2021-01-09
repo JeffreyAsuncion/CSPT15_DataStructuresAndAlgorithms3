@@ -27,19 +27,23 @@ Note: You should be able to develop a solution that has O(n) time complexity.
 """
 
 def csFindTheSingleNumber(nums):
-    map = {}
+    # set the map
+    seen = {}
     
+    # loop thru list of nums
     for num in nums:
-        if num not in map:
-            map[num] = 1
+        # if not in seen
+        if num not in seen:
+            seen[num] = 1
+        # otherwise in seen
         else:
-            map[num] += 1
+            seen[num] += 1
     
+    # loop thru and find it 
     for num in nums:
-        if map[num] == 1:
+        if seen[num] == 1:
             # print("found it")
             return num
-
 
 
 

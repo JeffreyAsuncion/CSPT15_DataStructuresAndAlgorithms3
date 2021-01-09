@@ -19,13 +19,20 @@ Output: 0
 """
 
 def csMaxNumberOfLambdas(text):
+    # set a list like a stack
     lamb = list("lambda")
+    # set a counter
     counter = 0
+    
+    # loop thru the lambda
     for i in range(len(lamb)):
+        # popping off each letter
         letter = lamb.pop()
+        # counter the number of letters of lambda in text
         counter += text.count(letter)
-            
+    # return number of full lambdas    
     return counter // 6
+
 
 # Example 1:
 text1 = "mbxcdatlas"

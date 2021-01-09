@@ -25,48 +25,29 @@ The score of the students is between 1 and 100.
 Leetcode 1086
 https://www.youtube.com/watch?v=3iqC5J4l0Cc"""
 
-def csAverageOfTopFive(scores):
-    """
-    My solution is broken
-    """
-    result = []
-    _lista = []
-    _listb = []
-    for i in range(len(scores)):
-        for j in range(0, 2):
-            #print(scores[i][j])
-            if i == 0:
-                _lista.append(scores[i][j])
-            if i == 1:
-                _listb.append(scores[i][j])
-    _lista.sort(reverse=True)
-    averageA = sum(_lista[:6])/5
-    result.append([1, averageA])
-    _listb.sort(reverse=True)
-    averageB = sum(_listb[:6])/5
-    result.append([2, averageB])
 
-    return result
-
-"""
-Corey Solution
-"""
 def csAverageOfTopFive(scores):
-# for loop to iterate over nested list  
-    list = []
+
+    if len(scores) == 1:
+        return scores
+
+    list1=[]
+    list2=[]
+
     for i in range(len(scores)):
-        if scores[i][0] not in list:
-            list.append(scores[i][0])
-        # iterate over student id's and append them to dictionary key. Set each dictionary key to an             empty list
-    new_dict = dict.fromkeys(list, [])
-    print(new_dict)
-    for i in range(len(scores)):
-        print(scores[i][0])
-        print(new_dict[scores[i][0]])
-        new_dict[scores[i][0]].append(scores[i][1])
-        print(new_dict)
+        if (scores[i][0]==1):
+            list1.append(scores[i][1])
+        if (scores[i][0]==2):
+            list2.append(scores[i][1])
+    
+    A1 = [1,sum(sorted(list1,reverse=True)[:5]) // 5]
+    B1 = [2,sum(sorted(list2,reverse=True)[:5]) // 5]
+
+    return A1, B1
 
 
 
 scores = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]
+# Output: [[1,87],[2,88]]
+# scores = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]
 print(csAverageOfTopFive(scores))#Output: [[1,87],[2,88]]
